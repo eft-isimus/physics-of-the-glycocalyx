@@ -15,6 +15,7 @@ for sd in sorted(d for d in folder.glob("seed_*") if d.is_dir()):
 #PBS -l nodes=1:ppn=8
 #PBS -l walltime={walltime}
 #PBS -l mem=4gb
+#PBS -q cpu
 #PBS -j oe
 #PBS -o {sd}/job.log
 
