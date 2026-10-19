@@ -4,7 +4,7 @@
 import sys
 from pathlib import Path
 
-INPUT = "input_data"
+INPUT = "input_file"
 SCRIPTS = Path(__file__).resolve().parent
 
 folder, walltime, n_steps = Path(sys.argv[1]).resolve(), sys.argv[2], sys.argv[3]
