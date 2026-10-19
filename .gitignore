@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# Keep directories traversable (needed so git can see files inside them)
+!*/
+
+# Keep specific files 
+!create_brush_data_file.py
+!create_input_files.py
+!wrapper_data_input_creation.py
+!create_job_files.py
+!heights_calculate.py
+!pz_calculate.py
+!.gitignore
