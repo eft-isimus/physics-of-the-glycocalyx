@@ -12,10 +12,10 @@ num_polymer_types = len(bending_const)
 num_atom_types = int(2*num_polymer_types + 1)
 Temperature = parse_array(sys.argv[2], float)[0]
 dt = parse_array(sys.argv[3], float)[0]
-eq_steps = parse_array(sys.argv[4], float)[0]
-eq_traj_dump_freq = parse_array(sys.argv[5], float)[0]
-prod_steps = parse_array(sys.argv[6], float)[0]
-prod_traj_dump_freq = parse_array(sys.argv[7], float)[0]
+eq_steps = parse_array(sys.argv[4], int)[0]
+eq_traj_dump_freq = parse_array(sys.argv[5], int)[0]
+prod_steps = parse_array(sys.argv[6], int)[0]
+prod_traj_dump_freq = parse_array(sys.argv[7], int)[0]
 output_dir    = sys.argv[8]
 
 # NOTE: !!!
