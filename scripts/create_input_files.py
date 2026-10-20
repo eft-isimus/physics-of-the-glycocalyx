@@ -10,12 +10,12 @@ def parse_array(s, dtype):
 bending_const = parse_array(sys.argv[1], float)
 num_polymer_types = len(bending_const)
 num_atom_types = int(2*num_polymer_types + 1)
-Temperature = parse_array(sys.argv[2], float)
-dt = parse_array(sys.argv[3], float)
-eq_steps = parse_array(sys.argv[4], float)
-eq_traj_dump_freq = parse_array(sys.argv[5], float)
-prod_steps = parse_array(sys.argv[6], float)
-prod_traj_dump_freq = parse_array(sys.argv[7], float)
+Temperature = parse_array(sys.argv[2], float)[0]
+dt = parse_array(sys.argv[3], float)[0]
+eq_steps = parse_array(sys.argv[4], float)[0]
+eq_traj_dump_freq = parse_array(sys.argv[5], float)[0]
+prod_steps = parse_array(sys.argv[6], float)[0]
+prod_traj_dump_freq = parse_array(sys.argv[7], float)[0]
 output_dir    = sys.argv[8]
 
 # NOTE: !!!
