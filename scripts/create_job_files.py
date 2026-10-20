@@ -24,7 +24,7 @@ module load compiler/gcc-12.0
 module load compiler/openmpi-3.1.6
 module load apps/lammps-stable_2Aug2023
 module load compiler/python3.8
-mpirun -np 4 lmp_mpi -in {INPUT} && \\
+mpirun -np 8 lmp_mpi < {INPUT} && \\
 python3 {SCRIPTS}/heights_calculate.py {sd}/eq_dump.lammpstraj && \\
 python3 {SCRIPTS}/heights_calculate.py {sd}/prod_dump.lammpstraj && \\
 python3 {SCRIPTS}/pz_calculate.py {sd}/prod_dump.lammpstraj {n_steps}
