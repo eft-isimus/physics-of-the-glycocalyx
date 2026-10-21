@@ -24,8 +24,9 @@ module load compiler/gcc-12.0
 module load compiler/openmpi-3.1.6
 module load apps/lammps-stable_2Aug2023
 mpirun -np 8 lmp < {INPUT} && \\
-$HOME/venvs/lammps_tools/bin/python {SCRIPTS}/heights_calculate.py {sd}/eq_dump.lammpstraj && \\
-$HOME/venvs/lammps_tools/bin/python {SCRIPTS}/heights_calculate.py {sd}/prod_dump.lammpstraj && \\
-$HOME/venvs/lammps_tools/bin/python {SCRIPTS}/pz_calculate.py {sd}/prod_dump.lammpstraj {n_steps}
+module load compiler/python3.8
+$HOME/venvs/lammps38/bin/python {SCRIPTS}/heights_calculate.py {sd}/eq_dump.lammpstraj && \\
+$HOME/venvs/lammps38/bin/python {SCRIPTS}/heights_calculate.py {sd}/prod_dump.lammpstraj && \\
+$HOME/venvs/lammps38/bin/python {SCRIPTS}/pz_calculate.py {sd}/prod_dump.lammpstraj {n_steps}
 """)
     print(f"wrote {sd / 'job.pbs'}")
