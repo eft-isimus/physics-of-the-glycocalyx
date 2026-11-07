@@ -111,16 +111,20 @@ minimize 1.0e-4 1.0e-6 1000 10000
 reset_timestep 0
 
 # equilibration phase
+fix prog all print {eq_steps//10} "EQ $(100*elapsed/{eq_steps}:%.0f)% done, step $(step), est. time left $(cpuremain:%.0f) s" file progress.txt screen no
 dump traj_dump all custom {eq_traj_dump_freq} eq_dump.lammpstraj id mol type x y z
 dump_modify traj_dump sort id
-run {eq_steps}      
-
+run {eq_steps}
+unfix prog
+write_data eq_final.data nocoeff # creates a snapshot after equilibriation to be used for virus sims
 undump traj_dump
 
 # production phase
+fix prog all print {prod_steps//10} "PROD $(100*elapsed/{prod_steps}:%.0f)% done, step $(step), est. time left $(cpuremain:%.0f) s" append progress.txt screen no
 dump traj_dump all custom {prod_traj_dump_freq} prod_dump.lammpstraj id mol type x y z
 dump_modify traj_dump sort id
 run {prod_steps}      
+unfix prog
 
 """
 
