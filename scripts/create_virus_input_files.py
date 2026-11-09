@@ -58,10 +58,10 @@ def place_viruses(n, d, xlo, xhi, ylo, yhi):
     nx = min(n, int(np.ceil(np.sqrt(n*Lx/Ly))))
     ny = int(np.ceil(n/nx))
     dx, dy = Lx/nx, Ly/ny
-    if n > 1 and min(dx, dy) < d:
+    if min(dx, dy) < d:
         raise RuntimeError(f"Box too small for {n} viruses of diameter {d} (grid spacing {min(dx, dy):.2f})")
     grid = [(xlo + (i + 0.5)*dx, ylo + (j + 0.5)*dy) for j in range(ny) for i in range(nx)]
-    return grid[:n]
+    return grid[:n], dx, dy
 
 # parts of the input file which are the same for every seed
 angle_string = ""
@@ -90,7 +90,7 @@ for seed in seed_numbers:
     z_v = z_brush_top + gap + d_v/2             # virus centre height
     z_wall = z_v + d_v/2 + gap                  # wall above the viruses
     rng = np.random.default_rng(int(seed))      # LAMMPS random seeds
-    positions = place_viruses(n_virus, d_v, xlo, xhi, ylo, yhi)
+    positions, spacing_x, spacing_y = place_viruses(n_virus, d_v, xlo, xhi, ylo, yhi)
 
     virus_string = ""
     for x, y in positions:
@@ -198,6 +198,7 @@ Max polymer atom z (centre): {z_max}
 Brush top (polymer atom top): {z_brush_top}
 Virus centre z: {z_v}
 Wall z: {z_wall}
+Virus grid spacing (x, y): {spacing_x:.3f}, {spacing_y:.3f}
 Virus xy positions: {[(round(x, 3), round(y, 3)) for x, y in positions]}
 """
     with open(os.path.join(seed_dir, "input_log.txt"), "w") as f:
