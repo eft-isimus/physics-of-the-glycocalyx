@@ -159,9 +159,8 @@ fix freeze_force base_atoms setforce 0.0 0.0 0.0                                
 fix_modify freeze_force energy no
 velocity base_atoms set 0.0 0.0 0.0
 
-# energy minimisation
-minimize 1.0e-4 1.0e-6 1000 10000
-reset_timestep 0
+# no minimisation: the brush is already equilibrated and the viruses start without overlap
+reset_timestep 0                                            # read_dump sets the snapshot timestep
 
 # constant downward force on the viruses
 fix push virus_atoms addforce 0.0 0.0 {-abs(force)}
