@@ -8,7 +8,7 @@ from pathlib import Path
 INPUT = "input_file"
 SCRIPTS = Path(__file__).resolve().parent
 
-folder, walltime, n_steps, sim_type = Path(sys.argv[1]).resolve(), sys.argv[2], sys.argv[3], sys.argv[4]
+folder, walltime, n_steps, sim_type, job_name = Path(sys.argv[1]).resolve(), sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5]
 
 for sd in sorted(d for d in folder.glob("seed_*") if d.is_dir()):
     analysis = ""
@@ -22,7 +22,7 @@ $HOME/venvs/lammps38/bin/python {SCRIPTS}/pz_calculate.py {sd}/prod_dump.lammpst
         pass  # virus analysis scripts to be added later
 
     (sd / "job.pbs").write_text(f"""#!/bin/bash
-#PBS -N {sd.name}
+#PBS -N {job_name}_{sd.name}
 #PBS -l nodes=1:ppn=8
 #PBS -l walltime={walltime}
 #PBS -l mem=4gb
