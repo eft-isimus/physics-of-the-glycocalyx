@@ -8,6 +8,8 @@
 !scripts/
 !create_brush_data_file.py
 !create_input_files.py
+!create_virus_input_files.py
+!create_brush_eq_snapshots.py
 !wrapper_data_input_creation.py
 !create_job_files.py
 !heights_calculate.py
