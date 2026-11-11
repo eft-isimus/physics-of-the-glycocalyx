@@ -19,7 +19,9 @@ $HOME/venvs/lammps38/bin/python {SCRIPTS}/heights_calculate.py {sd}/eq_dump.lamm
 $HOME/venvs/lammps38/bin/python {SCRIPTS}/heights_calculate.py {sd}/prod_dump.lammpstraj && \\
 $HOME/venvs/lammps38/bin/python {SCRIPTS}/pz_calculate.py {sd}/prod_dump.lammpstraj {n_steps}"""
     elif sim_type == "virus":
-        pass  # virus analysis scripts to be added later
+        f""" && \\
+module load compiler/python3.8
+$HOME/venvs/lammps38/bin/python {SCRIPTS}/virus_heights_calculate.py {sd}/dump.lammpstraj"""
 
     (sd / "job.pbs").write_text(f"""#!/bin/bash
 #PBS -N {job_name}_{sd.name}
