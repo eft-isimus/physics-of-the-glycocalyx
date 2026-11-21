@@ -7,8 +7,10 @@ import shutil
 def parse_array(s, dtype):
     return np.array(s.strip("[]").split(","), dtype=dtype)
 
-# inputs: [bending_const_array] Temperature dt n_steps dump_freq virus_diameter n_virus force input_dir output_dir [seed_numbers]
-# input_dir must contain data_file and eq_snapshot_{seed_number}.lammpstraj for every seed number
+# inputs: [bending_const_array] Temperature dt n_steps dump_freq virus_diameter 
+# n_virus force input_dir output_dir [seed_numbers] 
+# # input_dir must contain data_file and eq_snapshot_{seed_number}.lammpstraj 
+# for every seed number
 # virus_diameter = contact diameter, i.e. distance at which two viruses touch (WCA minimum)
 # force is the magnitude of the constant force on each virus, applied in -z
 bending_const = parse_array(sys.argv[1], float)

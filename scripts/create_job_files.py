@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Usage: python create_job_files.py FOLDER WALLTIME N_DUMP_STEPS SIM_TYPE
+# Usage: python create_job_files.py FOLDER WALLTIME N_DUMP_STEPS SIM_TYPE JOB_NAME
 # SIM_TYPE: brush or virus
 # Note: This script should be placed in the same place as the analysis scripts
 import sys
